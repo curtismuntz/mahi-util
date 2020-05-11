@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Mahi/Util/Timing/Clock.hpp>
-#include <experimental/coroutine>
+#include <coroutine>
 #include <functional>
 #include <memory>
 #include <vector>
@@ -16,8 +16,8 @@ namespace util {
 //==============================================================================
 
 class Enumerator;
-using SuspendAlways = std::experimental::suspend_always;
-using SuspendNever  = std::experimental::suspend_never;
+using SuspendAlways = std::suspend_always;
+using SuspendNever  = std::suspend_never;
 
 //==============================================================================
 // YieldInsruction
@@ -109,10 +109,10 @@ private:
     friend struct PromiseType;
 
     /// Constructor
-    Coroutine(std::experimental::coroutine_handle<PromiseType> coroutine);
+    Coroutine(std::coroutine_handle<PromiseType> coroutine);
 
 private:
-    std::experimental::coroutine_handle<PromiseType> m_coroutine;  ///< underlying handle
+    std::coroutine_handle<PromiseType> m_coroutine;  ///< underlying handle
     bool                                             m_stop;
 };
 

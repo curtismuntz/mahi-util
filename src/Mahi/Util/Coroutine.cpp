@@ -70,7 +70,7 @@ SuspendAlways PromiseType::final_suspend() {
 }
 
 Enumerator PromiseType::get_return_object() {
-    auto h = std::experimental::coroutine_handle<PromiseType>::from_promise(*this);
+    auto h = std::coroutine_handle<PromiseType>::from_promise(*this);
     std::shared_ptr<Coroutine> coro(new Coroutine(h));
     return Enumerator(coro);
 }
@@ -97,7 +97,7 @@ SuspendAlways PromiseType::yield_value(std::shared_ptr<YieldInstruction>&& value
 // Coroutine
 //==============================================================================
 
-Coroutine::Coroutine(std::experimental::coroutine_handle<PromiseType> coroutine) :
+Coroutine::Coroutine(std::coroutine_handle<PromiseType> coroutine) :
     YieldInstruction(),
     m_coroutine(coroutine),
     m_stop(false)
