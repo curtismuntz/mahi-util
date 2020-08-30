@@ -1,10 +1,16 @@
 cc_library(
     name = "mahi_util",
-    srcs = glob(["src/Mahi/Util/**/*.cpp"]),
-    hdrs = glob([
-        "include/Mahi/**/*.hpp",
-        "include/Mahi/**/*.inl",
-    ]),
+    srcs = glob(
+        ["src/Mahi/Util/**/*.cpp"],
+        exclude = ["src/Mahi/Util/Coroutine.cpp"],
+    ),
+    hdrs = glob(
+        [
+            "include/Mahi/**/*.hpp",
+            "include/Mahi/**/*.inl",
+        ],
+        exclude = ["include/Mahi/Util/Coroutine.hpp"],
+    ),
     copts = [
         "-std=c++11",
         #        "-fcoroutines",
@@ -14,7 +20,7 @@ cc_library(
     includes = ["include"],
     linkopts = [
         "-lrt",
-        "-lstdc++coroutines",
+        #        "-lstdc++coroutines",
         "-lpthread",
     ],
     strip_include_prefix = "include",
