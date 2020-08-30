@@ -7,6 +7,7 @@ cc_library(
         "src/os.cc",
     ],
     hdrs = glob(["include/fmt/*.h"]),
+    copts = ["-std=c++11"],
     includes = ["include"],
     visibility = ["//visibility:public"],
 )

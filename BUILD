@@ -6,12 +6,15 @@ cc_library(
         "include/Mahi/**/*.inl",
     ]),
     copts = [
-        "-std=c++2a",
-        "-fcoroutines",
+        "-std=c++11",
+        #        "-fcoroutines",
+        "-DLinux",
+        "-D_GNU_SOURCE=1",
     ],
     includes = ["include"],
     linkopts = [
         "-lrt",
+        "-lstdc++coroutines",
         "-lpthread",
     ],
     strip_include_prefix = "include",
